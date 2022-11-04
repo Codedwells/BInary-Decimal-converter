@@ -47,7 +47,7 @@ const outPut = document.querySelector("#h2");
 const option = document.querySelector("#selection");
 var binn, decc;
 
-input1.addEventListener("input", (e) => {
+const domRender = (e) => {
 	if (option.value == "Bin") {
 		e.target.value = e.target.value.substring(0, 8);
 	} else if (option.value == "Dec") {
@@ -64,4 +64,23 @@ input1.addEventListener("input", (e) => {
 	if (input1.value.length < 1) {
 		outPut.innerText = "Ready when you are ;)";
 	}
+};
+
+input1.addEventListener("input", (e) => {
+	document.onkeydown = (e1) => {
+		if (option.value == "Bin") {
+			console.log(e1.key);
+			if (e1.key == 1 || e1.key == 0 || e1.key == "Backspace") {
+				domRender(e);
+			} else {
+				outPut.innerText = "Only 1s and 0s!!!";
+				setTimeout(() => {
+					e.target.value = "";
+					outPut.innerText = "Ready when you are ;)";
+				}, 2000);
+			}
+		} else if (options.value == "Dec") {
+			domRender(e);
+		}
+	};
 });
