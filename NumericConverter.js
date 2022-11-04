@@ -48,9 +48,9 @@ const option = document.querySelector("#selection");
 var binn, decc;
 
 input1.addEventListener("input", (e) => {
-	if (input1.value > 8 && option.value=='Bin') {
+	if (option.value == "Bin") {
 		e.target.value = e.target.value.substring(0, 8);
-	}else if (option.value == 'Dec' && input1.value > 3){
+	} else if (option.value == "Dec") {
 		e.target.value = e.target.value.substring(0, 3);
 	}
 	if (option.value == "Bin") {
@@ -60,6 +60,8 @@ input1.addEventListener("input", (e) => {
 	} else {
 		binn = toBin(e.target.value.substring(0, 3));
 		outPut.innerText = "Binary value is : " + binn;
-		console.log(decc);
+	}
+	if (input1.value.length < 1) {
+		outPut.innerText = "Ready when you are ;)";
 	}
 });
